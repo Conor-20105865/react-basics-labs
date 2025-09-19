@@ -29,13 +29,14 @@ function App() {
     setTaskState({tasks});
   } 
 
-  //delete if in wrong place
+  
     const [ formState, setFormState ] = useState({
     title: "",
     description: "",
+    priority: "Low",
     deadline: ""
   });
-  //delete if in wrong place
+  
 
     const formChangeHandler = (event) => {
     let form = {...formState};
@@ -46,6 +47,9 @@ function App() {
           break;
       case "description":
           form.description = event.target.value;
+          break;
+      case "priority":
+          form.priority = event.target.value;
           break;
       case "deadline":
           form.deadline = event.target.value;
@@ -88,7 +92,11 @@ function App() {
       deleteTask = {() => deleteHandler(index)}
     />
   ))} 
-      <AddTaskForm submit={formSubmitHandler} change={formChangeHandler} />
+      <AddTaskForm
+  submit={formSubmitHandler}
+  change={formChangeHandler}
+  priority={formState.priority}
+/>
 
 
     </div>
